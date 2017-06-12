@@ -33,6 +33,7 @@ Route::get('/category/create', 'CategoryController@create');
 Route::post('/category/store', 'CategoryController@store');
 Route::get('/category/edit/{id}', 'CategoryController@edit');
 Route::get('/category/delete/{id}', 'CategoryController@delete');
+Route::get('/remove-sub-cat', 'CategoryController@remove');
 
 Route::get('/about-us', 'AboutUsController@aboutUs');
 Route::get('/category-details', 'CategoryDetailsController@categoryDetails');

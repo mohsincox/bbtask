@@ -53,12 +53,12 @@
                                                 $i = 1;
                                             ?>
                                             @foreach($subCats as $subCat)
-                                                <div class="col-lg-12" id="divrmv-{{ $i }}">
+                                                <div class="col-lg-12" id="divrmv-{{ $subCat->id }}">
                                                     <div class="input-group margin-bottom-15">
                                                         <label>Category Name</label>
-                                                            <input type="text" class="form-control" value="{{ $subCat->name }}">
+                                                            <input type="text" class="form-control" value="{{ $subCat->name }}"> 
                                                             <span class="input-group-btn">
-                                                                <button class="btn btn-default margin-top-22" type="button"><span class="glyphicon glyphicon-remove" id="rmv-{{ $i }}"></span></button>
+                                                                <button class="btn btn-default margin-top-22" type="button"><span class="glyphicon glyphicon-remove" id="rmv-{{ $subCat->id }}"></span></button>
                                                             </span>
                                                     </div>
                                                 </div>
@@ -128,6 +128,12 @@
             $('[id^="rmv"]').click(function(){
                 var id = $(this).attr('id');
                 var items = id.split('-');
+                
+                var url = "{{url('/')}}" + '/remove-sub-cat?id=' + items[1];
+                console.log(url);
+                $.get(url, function(data){
+                    //alert();
+                });
                 $('#divrmv-'+items[1]).remove();
             });
         });

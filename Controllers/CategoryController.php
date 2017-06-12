@@ -63,4 +63,11 @@ class CategoryController extends Controller
     	$pCategories = Category::get();
     	return view('category.edit', compact('category', 'pCategories'));
     }
+
+    public function remove(Request $request)
+    {
+        $category = Category::find($request->id);
+        $category->parent_id = null;
+        $category->save();
+    }
 }
